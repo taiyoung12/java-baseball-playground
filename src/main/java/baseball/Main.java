@@ -6,6 +6,9 @@ public class Main {
         String answer = baseBall.generateAnswer();
 
         InputView input = new InputView();
-        input.getUserInput();
+        String userInput = input.getUserInput();
+
+        String status = baseBall.validateAnswer(userInput, answer);
+        System.out.println(status);
     }
 }
