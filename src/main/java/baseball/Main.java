@@ -6,9 +6,12 @@ public class Main {
         String answer = baseBall.generateAnswer();
 
         InputView input = new InputView();
-        String userInput = input.getUserInput();
+        String status;
 
-        String status = baseBall.validateAnswer(userInput, answer);
-        System.out.println(status);
+        do {
+            String userInput = input.getUserInput();
+            status = baseBall.validateAnswer(userInput, answer);
+            System.out.println(status);
+        } while (!"3스트라이크".equals(status));
     }
 }
