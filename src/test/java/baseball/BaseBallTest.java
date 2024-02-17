@@ -21,4 +21,16 @@ public class BaseBallTest {
         assertFalse(inputView.isValidateInput("-1"));
         assertFalse(inputView.isValidateInput("abc"));
     }
+
+    @Test
+    @DisplayName("정답으로 생성된 숫자는 3자리 이며 범위는 000~999이다.")
+    void generateAnswer() {
+        BaseBall baseBall = new BaseBall();
+        String actual = baseBall.generateAnswer();
+
+        boolean isLengthValid = actual.length() == 3;
+        boolean isInRange = actual.matches("\\d{3}") && Integer.parseInt(actual) >= 0 && Integer.parseInt(actual) < 1000;
+
+        assertTrue(isLengthValid && isInRange, "정답으로 생성된 숫자의 범위는 000~999이다.");
+    }
 }

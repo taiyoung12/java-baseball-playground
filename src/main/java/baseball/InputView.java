@@ -15,7 +15,7 @@ public class InputView {
             input = scanner.nextLine();
         } while (!isValidateInput(input));
 
-        return input; // 유효한 입력 반환
+        return input;
     }
 
     public boolean isValidateInput(String input) {
