@@ -25,6 +25,11 @@ public class BaseBall {
             if(!currentInput.equals(currentAnswer) && answer.contains(currentInput)){
                 ball+=1;
             }
+
+            if(currentInput.equals(currentAnswer)){
+                strike+=1;
+            }
+
         }
 
         if(strike == 0 && ball == 0){
