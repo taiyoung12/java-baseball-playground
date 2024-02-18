@@ -3,6 +3,8 @@ package baseball;
 import java.util.Scanner;
 
 public class InputView {
+    private final NumberValidate validator = new NumberValidate();
+
     private Scanner scanner;
     public InputView(){
         this.scanner = new Scanner(System.in);
@@ -13,12 +15,8 @@ public class InputView {
         do {
             System.out.print("숫자를 입력해 주세요 : ");
             input = scanner.nextLine();
-        } while (!isValidateInput(input));
+        } while (!validator.validateNumber(input));
 
         return input;
-    }
-
-    public boolean isValidateInput(String input) {
-       return input.matches("\\d{3}");
     }
 }

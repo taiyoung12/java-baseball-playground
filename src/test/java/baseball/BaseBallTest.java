@@ -9,29 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BaseBallTest {
     private final String anyInput = "123";
     private final BaseBall baseBall = new BaseBall();
-
     @Test
-    @DisplayName("입력받은 숫자의 범위가 000~999 이다.")
-    void inputFormat() {
-        InputView inputView = new InputView();
+    @DisplayName("사용자가 입력한 숫자와 정답으로 생성된 숫자는 3자리 이며 모두 서로 다른 숫자이다.")
+    void generateAnswerDifferentNumber() {
+        NumberValidate validate = new NumberValidate();
 
-        assertTrue(inputView.isValidateInput("000"));
-        assertTrue(inputView.isValidateInput("999"));
-        assertFalse(inputView.isValidateInput("0"));
-        assertFalse(inputView.isValidateInput("1001"));
-        assertFalse(inputView.isValidateInput("-1"));
-        assertFalse(inputView.isValidateInput("abc"));
+        assertTrue(validate.validateNumber("123"));
+        assertTrue(validate.validateNumber("981"));
+        assertFalse(validate.validateNumber("112"));
+        assertFalse(validate.validateNumber("12"));
+        assertFalse(validate.validateNumber("1234"));
     }
-    @Test
-    @DisplayName("정답으로 생성된 숫자는 3자리 이며 범위는 000~999이다.")
-    void generateAnswer() {
-        String actual = baseBall.generateAnswer();
 
-        boolean isLengthValid = actual.length() == 3;
-        boolean isInRange = actual.matches("\\d{3}") && Integer.parseInt(actual) >= 0 && Integer.parseInt(actual) < 1000;
-
-        assertTrue(isLengthValid && isInRange, "정답으로 생성된 숫자의 범위는 000~999이다.");
-    }
     @Test
     @DisplayName("입력받은 숫자가 낫싱인 상태를 판단할 수 있다.")
     void validateNothing(){

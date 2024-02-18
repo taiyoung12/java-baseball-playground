@@ -3,14 +3,19 @@ package baseball;
 import java.util.Random;
 
 public class BaseBall {
+    private final NumberValidate validator = new NumberValidate();
     public BaseBall(){
         String answer = generateAnswer();
     }
-
     public String generateAnswer() {
         Random random = new Random();
-        int randomNumber = random.nextInt(1000);
-        return String.format("%03d", randomNumber);
+        String randomNumber;
+
+        do {
+            randomNumber = String.format("%03d", random.nextInt(1000));
+        } while (!validator.validateNumber(randomNumber));
+
+        return randomNumber;
     }
     public String validateAnswer(String input, String answer) {
         String status = "";
