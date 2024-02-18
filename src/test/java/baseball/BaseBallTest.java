@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BaseBallTest {
     private final String anyInput = "123";
+    private final String answer = "789";
     private final BaseBall baseBall = new BaseBall();
     @Test
     @DisplayName("사용자가 입력한 숫자와 정답으로 생성된 숫자는 3자리 이며 모두 서로 다른 숫자이다.")
@@ -19,6 +20,22 @@ public class BaseBallTest {
         assertFalse(validate.validateNumber("112"));
         assertFalse(validate.validateNumber("12"));
         assertFalse(validate.validateNumber("1234"));
+    }
+
+    @Test
+    @DisplayName("스트라이크를 판단할 수 있다.")
+    void calculateStrike(){
+       assertEquals(1, baseBall.calculateStrike("701", answer), "1스트라이크 임을 판단할 수 있다.");
+       assertEquals(2, baseBall.calculateStrike("781", answer), "2스트라이크 임을 판단할 수 있다.");
+       assertEquals(3, baseBall.calculateStrike("789", answer), "3스트라이크 임을 판단할 수 있다.");
+    }
+
+    @Test
+    @DisplayName("볼을 판단할 수 있다.")
+    void calculateBall(){
+        assertEquals(1, baseBall.calculateBall("127", answer), "1볼 임을 판단할 수 있다.");
+        assertEquals(2, baseBall.calculateBall("917", answer), "2볼 임을 판단할 수 있다.");
+        assertEquals(3, baseBall.calculateBall("978", answer), "3볼 임을 판단할 수 있다.");
     }
 
     @Test
@@ -92,4 +109,5 @@ public class BaseBallTest {
 
         assertEquals("1스트라이크 2볼", actual, "입력값 중 동일한 위치의 숫자가 1개 있으며 자릿수는 일치하지 않으며 동일한 숫자가 2개 있으면 '1스트라이크 2볼'인 상태를 반환해야 한다.");
     }
+
 }

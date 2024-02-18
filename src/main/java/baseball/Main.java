@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         BaseBall baseBall = new BaseBall();
         String answer = baseBall.generateAnswer();
-        System.out.println(answer);
 
         InputView input = new InputView();
         String status;

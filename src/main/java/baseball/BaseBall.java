@@ -20,22 +20,8 @@ public class BaseBall {
     public String validateAnswer(String input, String answer) {
         String status = "";
 
-        int strike = 0;
-        int ball = 0;
-
-        for(int i = 0; i < input.length(); i++) {
-            String currentInput = String.valueOf(input.charAt(i));
-            String currentAnswer = String.valueOf(answer.charAt(i));
-
-            if(!currentInput.equals(currentAnswer) && answer.contains(currentInput)){
-                ball+=1;
-            }
-
-            if(currentInput.equals(currentAnswer)){
-                strike+=1;
-            }
-
-        }
+        int strike = calculateStrike(input, answer);
+        int ball = calculateBall(input, answer);
 
         if(strike == 0 && ball == 0){
            status = "낫싱";
@@ -46,5 +32,36 @@ public class BaseBall {
         }
 
         return status;
+    }
+
+    public int calculateStrike(String input, String answer) {
+        int strike = 0;
+
+        for(int i = 0; i < input.length(); i++) {
+            String currentInput = String.valueOf(input.charAt(i));
+            String currentAnswer = String.valueOf(answer.charAt(i));
+
+            if(currentInput.equals(currentAnswer)){
+                strike+=1;
+            }
+        }
+
+        return strike;
+    }
+
+    public int calculateBall(String input, String answer) {
+        int ball = 0;
+
+        for(int i = 0; i < input.length(); i++) {
+            String currentInput = String.valueOf(input.charAt(i));
+            String currentAnswer = String.valueOf(answer.charAt(i));
+
+            if(!currentInput.equals(currentAnswer) && answer.contains(currentInput)){
+                ball+=1;
+            }
+        }
+
+        return ball;
+
     }
 }
