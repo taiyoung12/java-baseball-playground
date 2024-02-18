@@ -87,4 +87,20 @@ public class BaseBallTest {
 
         assertEquals("3스트라이크 0볼", actual, "입력값 중 동일한 위치의 숫자가 3개 있으면 '3스트라이크 0볼'인 상태를 반환해야 한다.");
     }
+
+    @Test
+    @DisplayName("입력받은 숫자가 1스트라이크 1볼인 상태를 판단할 수 있다.")
+    void validateOneStrikeOneBall(){
+        String actual = baseBall.validateAnswer(anyInput, "192");
+
+        assertEquals("1스트라이크 1볼", actual, "입력값 중 동일한 위치의 숫자가 1개 있으며 자릿수는 일치하지 않으며 동일한 숫자가 1개 있으면 '1스트라이크 1볼'인 상태를 반환해야 한다.");
+    }
+
+    @Test
+    @DisplayName("입력받은 숫자가 1스트라이크 2볼인 상태를 판단할 수 있다.")
+    void validateOneStrikeTwoBall(){
+        String actual = baseBall.validateAnswer(anyInput, "132");
+
+        assertEquals("1스트라이크 2볼", actual, "입력값 중 동일한 위치의 숫자가 1개 있으며 자릿수는 일치하지 않으며 동일한 숫자가 2개 있으면 '1스트라이크 2볼'인 상태를 반환해야 한다.");
+    }
 }
