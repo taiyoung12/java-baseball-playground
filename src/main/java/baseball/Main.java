@@ -13,6 +13,6 @@ public class Main {
             String userInput = input.getUserInput();
             status = baseBall.validateAnswer(userInput, answer);
             System.out.println(status);
-        } while (!"3스트라이크".equals(status));
+        } while (!"3스트라이크 0볼".equals(status));
     }
 }

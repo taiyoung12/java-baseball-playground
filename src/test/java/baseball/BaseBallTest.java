@@ -8,13 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BaseBallTest {
     private final String anyInput = "123";
-    private final String answerNoting = "789";
-    private final String answerOneBall = "451";
-    private final String answerTwoBall = "431";
-    private final String answerThreeBall = "312";
-    private final String answerOneStrike = "178";
-    private final String answerTwoStrike = "129";
-    private final String answerThreeStrike = "123";
     private final BaseBall baseBall = new BaseBall();
 
     @Test
@@ -42,56 +35,56 @@ public class BaseBallTest {
     @Test
     @DisplayName("입력받은 숫자가 낫싱인 상태를 판단할 수 있다.")
     void validateNothing(){
-        String actual = baseBall.validateAnswer(anyInput, answerNoting);
+        String actual = baseBall.validateAnswer(anyInput, "789");
 
         assertEquals("낫싱", actual, "입력값 중 정답과 같은 숫자가 한개도 없으면 '낫싱'인 상태를 반환해야 한다.");
     }
 
     @Test
-    @DisplayName("입력받은 숫자가 1볼인 상태를 판단할 수 있다.")
+    @DisplayName("입력받은 숫자가 0스트라이크 1볼인 상태를 판단할 수 있다.")
     void validateOneBall(){
-        String actual = baseBall.validateAnswer(anyInput, answerOneBall);
+        String actual = baseBall.validateAnswer(anyInput, "781");
 
-        assertEquals("0스트라이크 1볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 1개 있으면 '1볼'인 상태를 반환해야 한다.");
+        assertEquals("0스트라이크 1볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 1개 있으면 '0스트라이크 1볼'인 상태를 반환해야 한다.");
     }
 
     @Test
-    @DisplayName("입력받은 숫자가 2볼인 상태를 판단할 수 있다.")
+    @DisplayName("입력받은 숫자가 0스트라이크 2볼인 상태를 판단할 수 있다.")
     void validateTwoBall(){
-        String actual = baseBall.validateAnswer(anyInput, answerTwoBall);
+        String actual = baseBall.validateAnswer(anyInput, "391");
 
-        assertEquals("0스트라이크 2볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 2개 있으면 '2볼'인 상태를 반환해야 한다.");
+        assertEquals("0스트라이크 2볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 2개 있으면 '0스트라이크 2볼'인 상태를 반환해야 한다.");
     }
 
     @Test
-    @DisplayName("입력받은 숫자가 3볼인 상태를 판단할 수 있다.")
+    @DisplayName("입력받은 숫자가 0스트라이크 3볼인 상태를 판단할 수 있다.")
     void validateThreeBall(){
-        String actual = baseBall.validateAnswer(anyInput, answerThreeBall);
+        String actual = baseBall.validateAnswer(anyInput, "312");
 
-        assertEquals("0스트라이크 3볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 3개 있으면 '3볼'인 상태를 반환해야 한다.");
+        assertEquals("0스트라이크 3볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 3개 있으면 '0스트라이크 3볼'인 상태를 반환해야 한다.");
     }
 
     @Test
-    @DisplayName("입력받은 숫자가 1스트라이크인 상태를 판단할 수 있다.")
+    @DisplayName("입력받은 숫자가 1스트라이크 0볼인 상태를 판단할 수 있다.")
     void validateOneStrike(){
-        String actual = baseBall.validateAnswer(anyInput, answerOneStrike);
+        String actual = baseBall.validateAnswer(anyInput, "178");
 
-        assertEquals("1스트라이크 0볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 1개 있으면 '1볼'인 상태를 반환해야 한다.");
+        assertEquals("1스트라이크 0볼", actual, "입력값 중 동일한 위치의 숫자가 1개 있으면 '1스트라이크 0볼'인 상태를 반환해야 한다.");
     }
 
     @Test
-    @DisplayName("입력받은 숫자가 2스트라이크인 상태를 판단할 수 있다.")
+    @DisplayName("입력받은 숫자가 2스트라이크 0볼인 상태를 판단할 수 있다.")
     void validateTwoStrike(){
-        String actual = baseBall.validateAnswer(anyInput, answerTwoStrike);
+        String actual = baseBall.validateAnswer(anyInput, "128");
 
-        assertEquals("2스트라이크 0볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 2개 있으면 '2볼'인 상태를 반환해야 한다.");
+        assertEquals("2스트라이크 0볼", actual, "입력값 중 동일한 위치의 숫자가 2개 있으면 '2스트라이크 0볼'인 상태를 반환해야 한다.");
     }
 
     @Test
-    @DisplayName("입력받은 숫자가 3스트라이크인 상태를 판단할 수 있다.")
+    @DisplayName("입력받은 숫자가 3스트라이크 0볼인 상태를 판단할 수 있다.")
     void validateThreeStrike(){
-        String actual = baseBall.validateAnswer(anyInput, answerThreeStrike);
+        String actual = baseBall.validateAnswer(anyInput, "123");
 
-        assertEquals("3스트라이크 0볼", actual, "입력값 중 자릿수는 틀리고 일치하는 숫자가 3개 있으면 '3볼'인 상태를 반환해야 한다.");
+        assertEquals("3스트라이크 0볼", actual, "입력값 중 동일한 위치의 숫자가 3개 있으면 '3스트라이크 0볼'인 상태를 반환해야 한다.");
     }
 }
